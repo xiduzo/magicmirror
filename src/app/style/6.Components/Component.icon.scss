@@ -1,0 +1,66 @@
+.icon {
+	font-style: normal;
+	font-family: 'MeteoconsRegular';
+	font-size: 80%;
+
+	&--sunset { &:before { content: "A"; } }
+
+	&--sunny { &:before { content: "B"; } }
+
+	&--clear__night { &:before { content: "C"; } }
+
+	&--eclipse { &:before { content: "D"; } }
+
+	&--clear { &:before { content: "E"; } }
+
+	&--wind { &:before { content: "F"; } }
+
+	&--gear { &:before { content: "G"; } }
+
+	&--clouded__day { &:before { content: "H"; } }
+
+	&--clouded__night { &:before { content: "I"; } }
+
+	&--misty__day { &:before { content: "J"; } }
+
+	&--misty__night { &:before { content: "K"; } }
+
+	&--misty__clouded { &:before { content: "L"; } }
+
+	&--misty { &:before { content: "M"; } }
+
+	&--clouded { &:before { content: "N"; } }
+
+	&--thunder { &:before { content: "O"; } }
+
+	&--heavy__thunder { &:before { content: "P"; } }
+
+	&--drizzle { &:before { content: "Q"; } }
+
+	&--rain { &:before { content: "R"; } }
+
+	&--windy__clouded { &:before { content: "S"; } }
+
+	&--windy__clouded__rain { &:before { content: "T"; } }
+
+	&--snow { &:before { content: "U"; } }
+
+	&--heavy__snow { &:before { content: "V"; } }
+
+	&--super__heavy__snow { &:before { content: "W"; } }
+
+	&--hail { &:before { content: "X"; } }
+
+	&--heavy__clouded { &:before { content: "Y"; } }
+
+	&--heavy__clouded__thunder { &:before { content: "Z"; } }
+
+	&--heavy__clouded__heavy__thunder { &:before { content: "0"; } }
+
+	&--celcius { &:before { content: "*"; } }
+
+	&--fahrenheit { &:before { content: "+"; } }
+
+
+
+}

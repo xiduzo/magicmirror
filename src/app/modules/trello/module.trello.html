@@ -1,0 +1,17 @@
+<section>
+  <section ng-repeat="list in trello.lists">
+    <md-subheader>
+      {{ list.name }}
+    </md-subheader>
+    <md-list>
+      <md-list-item ng-repeat="item in list.cards | orderBy: 'due'" layout>
+        <span flex=60>
+          {{ item.name }}
+        </span>
+        <span flex=40 class="textAlign--right" ng-if="item.badges.due">
+          {{ item.due | fromNow }}
+        </span>
+      </md-list-item>
+    </md-list>
+  </section>
+</section>

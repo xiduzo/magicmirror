@@ -1,0 +1,39 @@
+<section>
+  <h1 class="md-subhead opacity--5">
+    <i class="icon icon--wind"></i>
+    {{ weather.current_weather.wind.speed }}
+    <i class="icon icon--sunset"></i>
+    <span ng-if="!weather.current_weather.sunrise">
+      {{ weather.current_weather.sunset }}
+    </span>
+    <span ng-if="!weather.current_weather.sunset">
+      {{ weather.current_weather.sunrise }}
+    </span>
+  </h1>
+  <h2 class="md-display-3">
+    <i class="icon icon--small icon--{{ weather.current_weather.icon }}"></i>
+     {{ weather.current_weather.main.temp | temperature }}<i class="icon icon--celcius"></i>
+  </h2>
+
+  <section>
+    <md-subheader>
+      WEERSVERWACHTING
+    </md-subheader>
+    <md-list>
+      <md-list-item ng-repeat="forecast in weather.weather_forecast.list | limitTo: 5" class="opacity--{{9 - $index * 2 }} textAlign--left" layout>
+        <strong flex=30>
+          {{ forecast.day }}
+        </strong>
+        <span flex=30>
+          <i class="icon icon--{{forecast.icon}}"></i>
+        </span>
+        <span flex=20>
+          {{ forecast.temp.max | temperature }}
+        </span>
+        <span flex=20 class="textAlign--right">
+          {{ forecast.temp.min | temperature }}
+        </span>
+      </md-list-item>
+    </md-list>
+  </section>
+</section>
