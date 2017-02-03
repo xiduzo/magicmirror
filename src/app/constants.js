@@ -4,8 +4,6 @@
 
   angular
     .module('mirror')
-    .constant('malarkey', malarkey)
-    .constant('moment', moment)
     .constant('SPEECH_VOICE', 'Dutch Female')
     .constant('MAX_INACTIVE_TIME', 1000 * 60 * 15)
     .constant('TRELLO_KEY', '85ea9af753540fb15c161d5eedd67a49')
