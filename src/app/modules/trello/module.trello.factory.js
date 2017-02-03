@@ -19,10 +19,6 @@
     vm.init = init;
 
     function init() {
-      // Just wait a bit for the application to be loaded
-      // If not the TrelloApi will give a shitload of errors
-      // Should be angular 1.3 for it to work properly .__.
-      // $timeout(getLists, 1000 * 5);
       getLists();
     }
 

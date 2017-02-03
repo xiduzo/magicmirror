@@ -11,7 +11,6 @@
       'ngAria',
       'restangular',
       'ui.router',
-      'ngMaterial',
       'toastr',
       'trello'
     ]);

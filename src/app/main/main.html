@@ -1,39 +1,22 @@
-<md-content layout="column" layout-fill layout-padding style="height: 100vh;" class="opacity--{{main.screen_brightness}}">
+<section style="height: 100vh;">
 
+  <section class="g-row12">
+    <section class="g-col4--xs">
+      <date-time-module></date-time-module>
+      <trello-module></trello-module>
+    </section>
 
-  <!-- Main section -->
-  <section layout="column" layout-wrap layout-fill>
+    <section class="g-col5--xs">
 
-    <!-- Top -->
-    <div flex=30 layout layout-align="space-between start">
+    </section>
 
-      <div layout="column" flex=30>
-        <date-time-module></date-time-module>
-        <trello-module></trello-module>
-      </div>
-
-      <div flex=40>
-        <!-- Spacer -->
-      </div>
-
-      <div flex=30 layout="column" class="textAlign--right">
-        <weather-module></weather-module>
-      </div>
-
-    </div>
-
-    <!-- Middle -->
-    <div flex=50 layout layout-align="center center">
-      <!-- middle -->
-    </div>
-
-    <!-- Bottom -->
-    <div flex=20 layout layout-align="center center">
-      <div flex=60>
-        <quotes-module></quotes-module>
-      </div>
-    </div>
-
+    <section class="g-col3--xs">
+      <weather-module></weather-module>
+    </section>
   </section>
 
-</md-content>
+  <section>
+    <quotes-module></quotes-module>
+  </section>
+
+</section>

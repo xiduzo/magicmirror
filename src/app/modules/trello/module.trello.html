@@ -1,17 +1,22 @@
 <section>
   <section ng-repeat="list in trello.lists">
-    <md-subheader>
+    <span class="subheader opacity--5">
       {{ list.name }}
-    </md-subheader>
-    <md-list>
-      <md-list-item ng-repeat="item in list.cards | orderBy: 'due'" layout>
-        <span flex=60>
+    </span>
+    <ul>
+      <li ng-if="list.cards.length <=0" class="opacity--5">
+        <em>
+          No items in this list
+        </em>
+      </li>
+      <li ng-repeat="item in list.cards | orderBy: 'due'" class="g-row12">
+        <span class="g-col8--xs">
           {{ item.name }}
         </span>
-        <span flex=40 class="textAlign--right" ng-if="item.badges.due">
+        <span class="textAlign--right g-col-4--xs" ng-if="item.badges.due">
           {{ item.due | fromNow }}
         </span>
-      </md-list-item>
-    </md-list>
+      </li>
+    </ul>
   </section>
 </section>
