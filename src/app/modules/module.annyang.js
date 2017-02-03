@@ -18,7 +18,7 @@
     vm.reminder = null;
 
     vm.basic_commands = {
-      'hallo': sayHello,
+      'hallo': sayHello
     };
 
     vm.init = init;
@@ -30,7 +30,8 @@
         setCommands();
 
         annyang.addCallback('result', function(userSaid, commandText, phrases) {
-          console.log(userSaid);
+          $log.log(userSaid);
+          $log.log(phrases);
           $rootScope.$broadcast('user-said', {phrase: userSaid[0]});
         });
 
@@ -50,11 +51,6 @@
       $timeout(function() {
         annyang.start();
       }, 1000);
-    }
-
-    function setReminder() {
-      $rootScope.$broadcast('set-reminder', {reminder: vm.reminder});
-      annyang.addCommands(vm.basic_commands);
     }
 
     return vm;

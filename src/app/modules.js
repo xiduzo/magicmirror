@@ -13,7 +13,7 @@
       'ui.router',
       'ngMaterial',
       'toastr',
-      'trello',
+      'trello'
     ]);
 
 })();

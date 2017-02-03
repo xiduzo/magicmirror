@@ -7,6 +7,7 @@
 
   /** @ngInject */
   function WeatherFactory(
+    $log,
     $http,
     $rootScope,
     $timeout
@@ -51,6 +52,7 @@
 
         $rootScope.$broadcast('current-weather', {weather: response.data});
       }, function errorCallback(response) {
+        $log.error(response);
       });
 
       // Update the current weather once every 30 minutes
@@ -77,6 +79,7 @@
 
         $rootScope.$broadcast('weather-forecast', {weather: response.data});
       }, function errorCallback(response) {
+        $log.error(response);
       });
 
       // Get the forecast once every 4 hours

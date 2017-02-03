@@ -18,7 +18,7 @@
       key: TRELLO_KEY,
       secret: TRELLO_SECRET,
       scope: {read: true, write: true, account: true},
-      name: 'Magic Mirror',
+      name: 'Magic Mirror'
     });
 
     // Enable log

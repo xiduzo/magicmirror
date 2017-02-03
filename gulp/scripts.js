@@ -19,8 +19,15 @@ gulp.task('scripts', function() {
 });
 
 function buildScripts() {
-  return gulp.src(path.join(conf.paths.src, '/app/**/*.js'))
-    .pipe($.eslint())
+  return gulp.src([path.join(conf.paths.src, '/app/**/*.js'), '!src/app/extern/**/*.js'])
+    .pipe($.eslint({
+        globals: [
+            'moment',
+            'annyang',
+            '_',
+            'responsiveVoice'
+        ]
+    }))
     .pipe($.eslint.format())
     .pipe($.size())
 };
