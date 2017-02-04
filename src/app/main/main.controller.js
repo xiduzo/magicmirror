@@ -40,10 +40,10 @@
     checkForInactivity();
 
     // Let's load some shit shall we?
-    $timeout(QuotesFactory.init, 1009 * 1);
-    $timeout(WeatherFactory.init, 1000 * 1);
-    $timeout(DateTimeFactory.init, 1000 * 1);
-    $timeout(TrelloModuleFactory.init, 1000 * 1);
+    $timeout(WeatherFactory.init, 1000 * 5);
+    $timeout(DateTimeFactory.init, 1000 * 5);
+    $timeout(QuotesFactory.init, 1009 * 10);
+    $timeout(TrelloModuleFactory.init, 1000 * 15);
 
     $scope.$on('user-said', function(event, response) {
       vm.userSaid = response.phrase;

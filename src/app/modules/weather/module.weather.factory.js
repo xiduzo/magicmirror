@@ -38,16 +38,12 @@
       .then(function successCallback(response) {
         // Adding some additional data
         response.data.icon = getWeatherIcon(response.data.weather[0].main);
-        response.data.sunset = true;
-        response.data.sunrise = true;
 
         // Check if the sunset has allready happened
         if(moment.unix(response.data.sys.sunset).isBefore(moment())) {
-          response.data.sunrise = false;
-          response.data.sunset = moment.unix(response.data.sys.sunset).format('HH:mm');
-        } else {
-          response.data.sunset = false;
           response.data.sunrise = moment.unix(response.data.sys.sunrise).format('HH:mm');
+        } else {
+          response.data.sunset = moment.unix(response.data.sys.sunset).format('HH:mm');
         }
 
         $rootScope.$broadcast('current-weather', {weather: response.data});

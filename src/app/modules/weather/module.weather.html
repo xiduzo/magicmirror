@@ -3,11 +3,11 @@
     <i class="icon icon--wind"></i>
     {{ weather.current_weather.wind.speed }}
     <i class="icon icon--sunset"></i>
-    <span ng-if="!weather.current_weather.sunrise">
-      {{ weather.current_weather.sunset }}
-    </span>
-    <span ng-if="!weather.current_weather.sunset">
+    <span ng-if="weather.current_weather.sunrise">
       {{ weather.current_weather.sunrise }}
+    </span>
+    <span ng-if="weather.current_weather.sunset">
+      {{ weather.current_weather.sunset }}
     </span>
   </h1>
   <h2 class="display--3">
