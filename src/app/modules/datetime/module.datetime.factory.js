@@ -32,7 +32,7 @@
     }
 
     function getCurrentDate() {
-      var date = moment().format('dddd, d MMMM YYYY');
+      var date = moment().format('dddd, DD MMMM YYYY');
       $rootScope.$broadcast('date', {date: date});
     }
 
