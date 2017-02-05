@@ -38,7 +38,6 @@
       .then(function successCallback(response) {
         // Adding some additional data
         response.data.icon = getWeatherIcon(response.data.weather[0].main);
-
         // Check if the sunset has allready happened
         if(moment.unix(response.data.sys.sunset).isBefore(moment())) {
           response.data.sunrise = moment.unix(response.data.sys.sunrise).format('HH:mm');
@@ -96,6 +95,9 @@
           break;
         case "Clear":
           icon = 'sunny';
+          break;
+        case "Mist":
+          icon = 'misty';
           break;
         default:
           icon = 'sunny';
