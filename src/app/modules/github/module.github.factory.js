@@ -7,6 +7,7 @@
 
   /** @ngInject */
   function Github(
+    $log,
     $http,
     $timeout
   ) {
@@ -29,7 +30,7 @@
       .then(function successCallback(response) {
         compareHash(response.data.object.sha);
       }, function errorCallback(response) {
-        // $log.error(response);
+        $log.error(response);
       });
     }
 
@@ -39,9 +40,9 @@
       } else if (hash != latestGitHash) {
         location.reload();
       }
-      console.log(latestGitHash);
+
       // Check for a update every 10 minutes
-      $timeout(getLatestGitHash, 1000 * 5);
+      $timeout(getLatestGitHash, 1000 * 60 * 10);
     }
 
     return vm;

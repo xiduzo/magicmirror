@@ -14,6 +14,7 @@
     Annyang,
     WeatherFactory,
     QuotesFactory,
+    Github,
     TrelloModuleFactory,
     MAX_INACTIVE_TIME
   ) {
@@ -39,17 +40,8 @@
 
     checkForInactivity();
 
-    $http({
-      method: 'GET',
-      url: 'https://api.github.com/repos/xiduzo/magicmirror/git/refs/heads/master'
-    })
-    .then(function successCallback(response) {
-      console.log(response);
-    }, function errorCallback(response) {
-      // $log.error(response);
-    });
-
     // Let's load some shit shall we?
+    $timeout(Github.init, 1000 * 1);
     $timeout(WeatherFactory.init, 1000 * 3);
     $timeout(DateTimeFactory.init, 1000 * 3);
     $timeout(QuotesFactory.init, 1009 * 3);
