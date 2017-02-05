@@ -3,10 +3,10 @@
 
   angular
     .module('mirror')
-    .factory('TrelloModuleFactory', TrelloModuleFactory);
+    .factory('TrelloFactory', TrelloFactory);
 
   /** @ngInject */
-  function TrelloModuleFactory(
+  function TrelloFactory(
     $rootScope,
     $timeout,
     $log,

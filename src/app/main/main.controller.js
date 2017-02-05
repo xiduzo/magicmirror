@@ -11,17 +11,17 @@
     $timeout,
     $scope,
     DateTimeFactory,
-    Annyang,
+    AnnyangFactory,
     WeatherFactory,
     QuotesFactory,
-    Github,
-    TrelloModuleFactory,
+    GithubFactory,
+    TrelloFactory,
     MAX_INACTIVE_TIME
   ) {
 
     var vm = this;
 
-    vm.screen_brightness = 10;
+    vm.screen_brightness = 0;
 
     var inactive_timer = MAX_INACTIVE_TIME;
 
@@ -41,18 +41,27 @@
     checkForInactivity();
 
     // Let's load some shit shall we?
-    $timeout(Github.init, 1000 * 1);
-    $timeout(WeatherFactory.init, 1000 * 3);
-    $timeout(DateTimeFactory.init, 1000 * 3);
+    $timeout(GithubFactory.init, 1000 * 1);
+    $timeout(DateTimeFactory.init, 1000 * 2);
     $timeout(QuotesFactory.init, 1009 * 3);
-    $timeout(TrelloModuleFactory.init, 1000 * 3);
+    $timeout(WeatherFactory.init, 1000 * 5);
+    $timeout(TrelloFactory.init, 1000 * 10);
 
     $scope.$on('user-said', function(event, response) {
       vm.userSaid = response.phrase;
     });
 
-    // Annyang.init();
-    //
+    AnnyangFactory.init();
+
+    $scope.$on('brightness', function(event , data) {
+      if(data.brightness >= 3) {
+        inactive_timer = MAX_INACTIVE_TIME;
+      } else if (data.brightness === 0) {
+        inactive_timer = 0;
+      }
+      updateScreenBrightness(data.brightness);
+    });
+
     function updateScreenBrightness(brightness) {
       vm.screen_brightness = brightness;
     }

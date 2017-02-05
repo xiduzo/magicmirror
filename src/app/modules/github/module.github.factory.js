@@ -3,10 +3,10 @@
 
   angular
     .module('mirror')
-    .factory('Github', Github);
+    .factory('GithubFactory', GithubFactory);
 
   /** @ngInject */
-  function Github(
+  function GithubFactory(
     $log,
     $http,
     $timeout
