@@ -7,6 +7,7 @@
 
   /** @ngInject */
   function MainController(
+    $http,
     $timeout,
     $scope,
     DateTimeFactory,
@@ -21,7 +22,6 @@
 
     vm.screen_brightness = 10;
 
-    // If inactive for 5 minutes, shutdown the screen
     var inactive_timer = MAX_INACTIVE_TIME;
 
     function checkForInactivity() {
@@ -39,11 +39,21 @@
 
     checkForInactivity();
 
+    $http({
+      method: 'GET',
+      url: 'https://api.github.com/repos/xiduzo/magicmirror/git/refs/heads/master'
+    })
+    .then(function successCallback(response) {
+      console.log(response);
+    }, function errorCallback(response) {
+      // $log.error(response);
+    });
+
     // Let's load some shit shall we?
-    $timeout(WeatherFactory.init, 1000 * 5);
-    $timeout(DateTimeFactory.init, 1000 * 5);
-    $timeout(QuotesFactory.init, 1009 * 10);
-    $timeout(TrelloModuleFactory.init, 1000 * 15);
+    $timeout(WeatherFactory.init, 1000 * 3);
+    $timeout(DateTimeFactory.init, 1000 * 3);
+    $timeout(QuotesFactory.init, 1009 * 3);
+    $timeout(TrelloModuleFactory.init, 1000 * 3);
 
     $scope.$on('user-said', function(event, response) {
       vm.userSaid = response.phrase;
