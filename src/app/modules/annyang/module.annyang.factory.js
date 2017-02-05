@@ -15,11 +15,10 @@
 
     var vm = this;
 
-    vm.reminder = null;
-
     vm.basic_commands = {
       'hallo': wakeUp,
-      'slaap': sleep,
+      'goede *timeOfDay': wakeUp,
+      'slaap': sleep
     };
 
     vm.init = init;
@@ -40,13 +39,17 @@
       }
     }
 
-    function wakeUp() {
+    function wakeUp(timeOfDay) {
       $rootScope.$broadcast('brightness', {brightness: 10});
-      // annyang.abort();
-      // responsiveVoice.speak('hallo sander', SPEECH_VOICE);
-      // $timeout(function() {
-      //   annyang.start();
-      // }, 1000);
+      annyang.abort();
+      if(timeOfDay) {
+        responsiveVoice.speak('Goede ' + timeOfDay, SPEECH_VOICE);
+      } else {
+        responsiveVoice.speak('Hallo sander', SPEECH_VOICE);
+      }
+      $timeout(function() {
+        annyang.start();
+      }, 1000);
     }
 
     function sleep() {
