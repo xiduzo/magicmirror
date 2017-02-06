@@ -26,7 +26,6 @@
     var inactive_timer = MAX_INACTIVE_TIME;
 
     function checkForInactivity() {
-      console.log(inactive_timer);
       if(inactive_timer === MAX_INACTIVE_TIME * 0.30) {
         updateScreenBrightness(2);
         inactive_timer -= 1000;
