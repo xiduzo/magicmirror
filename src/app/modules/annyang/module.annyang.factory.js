@@ -45,7 +45,7 @@
       if(timeOfDay) {
         responsiveVoice.speak('Goede ' + timeOfDay, SPEECH_VOICE);
       } else {
-        responsiveVoice.speak('Hallo sander', SPEECH_VOICE);
+        responsiveVoice.speak('Hallo', SPEECH_VOICE);
       }
       $timeout(function() {
         annyang.start();
