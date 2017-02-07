@@ -22,6 +22,7 @@
     var vm = this;
 
     vm.screen_brightness = 10;
+    vm.userSaid = null;
 
     var inactive_timer = MAX_INACTIVE_TIME;
 
@@ -57,6 +58,10 @@
         inactive_timer = 0;
       }
       updateScreenBrightness(data.brightness);
+    });
+
+    $scope.$on('speach', function(event, data) {
+      vm.userSaid = data.speach[0];
     });
 
     function updateScreenBrightness(brightness) {

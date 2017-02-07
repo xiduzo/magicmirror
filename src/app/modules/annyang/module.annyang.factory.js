@@ -18,7 +18,8 @@
     vm.basic_commands = {
       'hallo': wakeUp,
       'goede *timeOfDay': wakeUp,
-      'slaap': sleep
+      'slaap': sleep,
+      '(ga) uit': sleep,
     };
 
     vm.init = init;
@@ -31,6 +32,7 @@
 
         annyang.addCallback('result', function(userSaid, commandText, phrases) {
           $log.log(userSaid);
+          $rootScope.$broadcast('speach', {speach: userSaid});
           $log.log(commandText);
           $log.log(phrases);
         });
@@ -41,15 +43,15 @@
 
     function wakeUp(timeOfDay) {
       $rootScope.$broadcast('brightness', {brightness: 10});
-      annyang.abort();
-      if(timeOfDay) {
-        responsiveVoice.speak('Goede ' + timeOfDay, SPEECH_VOICE);
-      } else {
-        responsiveVoice.speak('Hallo', SPEECH_VOICE);
-      }
-      $timeout(function() {
-        annyang.start();
-      }, 1000);
+      // annyang.abort();
+      // if(timeOfDay) {
+      //   responsiveVoice.speak('Goede ' + timeOfDay, SPEECH_VOICE);
+      // } else {
+      //   responsiveVoice.speak('Hallo', SPEECH_VOICE);
+      // }
+      // $timeout(function() {
+      //   annyang.start();
+      // }, 1000);
     }
 
     function sleep() {
