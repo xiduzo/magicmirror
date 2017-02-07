@@ -10,10 +10,10 @@
         </em>
       </li>
       <li ng-repeat="item in list.cards | orderBy: 'due'" class="g-row12">
-        <span class="g-col8--xs">
+        <span class="g-col7--xs">
           {{ item.name }}
         </span>
-        <span class="textAlign--right g-col4--xs" ng-if="item.badges.due">
+        <span class="textAlign--right g-col5--xs" ng-if="item.badges.due">
           {{ item.due | fromNow }}
         </span>
       </li>
