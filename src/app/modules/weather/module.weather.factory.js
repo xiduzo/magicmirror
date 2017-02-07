@@ -99,6 +99,9 @@
         case "Mist":
           icon = 'misty';
           break;
+        case "Snow":
+          icon = 'snow';
+          break;
         default:
           icon = 'sunny';
       }

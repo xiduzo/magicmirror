@@ -43,11 +43,11 @@
 
 	&--windy__clouded__rain { &:before { content: "T"; } }
 
-	&--snow { &:before { content: "U"; } }
+	// &--snow { &:before { content: "U"; } }
 
-	&--heavy__snow { &:before { content: "V"; } }
+	// &--snow { &:before { content: "V"; } }
 
-	&--super__heavy__snow { &:before { content: "W"; } }
+	&--snow { &:before { content: "W"; } }
 
 	&--hail { &:before { content: "X"; } }
 
