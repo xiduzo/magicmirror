@@ -12,7 +12,7 @@
   </h1>
   <h2 class="display--3">
     <i class="icon icon--small icon--{{ weather.current_weather.icon }}"></i>
-     {{ weather.current_weather.main.temp | temperature }}<i class="icon icon--celcius"></i>
+    {{ weather.current_weather.main.temp | temperature }}<i class="icon icon--celcius"></i>
   </h2>
 
   <section>
@@ -20,7 +20,7 @@
       Weersverwachting
     </span>
     <ul>
-      <li ng-repeat="forecast in weather.weather_forecast.list | limitTo: 5" class="opacity--{{9 - $index * 2 }} textAlign--left g-row12">
+      <li ng-repeat="forecast in weather.weather_forecast.list | limitTo: 5" class="opacity--{{10 - $index * 2 }} textAlign--left g-row12">
         <strong class="g-col3--xs">
           {{ forecast.day }}
         </strong>
