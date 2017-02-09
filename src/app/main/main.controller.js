@@ -42,13 +42,11 @@
     checkForInactivity();
 
     // Let's load some shit shall we?
-    $timeout(GithubFactory.init, 1000 * 5);
     $timeout(DateTimeFactory.init, 1000 * 1);
-    $timeout(QuotesFactory.init, 1009 * 2);
-    $timeout(WeatherFactory.init, 1000 * 4);
-    $timeout(TrelloFactory.init, 1000 * 6);
-
-    AnnyangFactory.init();
+    $timeout(WeatherFactory.init, 1000 * 5);
+    $timeout(GithubFactory.init, 1000 * 5);
+    $timeout(QuotesFactory.init, 1009 * 10);
+    $timeout(TrelloFactory.init, 1000 * 15);
 
     $scope.$on('brightness', function(event , data) {
       if(data.brightness >= 3) {

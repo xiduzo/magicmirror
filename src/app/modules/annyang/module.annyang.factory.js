@@ -19,7 +19,7 @@
       'hallo': wakeUp,
       'goede *timeOfDay': wakeUp,
       'slaap': sleep,
-      '(ga) uit': sleep,
+      '(ga) uit': sleep
     };
 
     vm.init = init;
@@ -42,6 +42,7 @@
     }
 
     function wakeUp(timeOfDay) {
+      $log.log(timeOfDay, SPEECH_VOICE);
       $rootScope.$broadcast('brightness', {brightness: 10});
       // annyang.abort();
       // if(timeOfDay) {
