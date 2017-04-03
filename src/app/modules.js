@@ -12,7 +12,8 @@
       'restangular',
       'ui.router',
       'toastr',
-      'trello'
+      'trello',
+      'ngIcal'
     ]);
 
 })();

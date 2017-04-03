@@ -3,10 +3,10 @@
 
   angular
     .module('mirror')
-    .factory('DateTimeFactory', DateTimeFactory);
+    .factory('DateTime', DateTime);
 
   /** @ngInject */
-  function DateTimeFactory(
+  function DateTime(
     $rootScope,
     $timeout
   ) {

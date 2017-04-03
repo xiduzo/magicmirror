@@ -23,7 +23,7 @@ function buildScripts() {
     .pipe($.eslint({
         globals: [
             'moment',
-            'annyang',
+            'artyom',
             '_',
             'responsiveVoice'
         ]

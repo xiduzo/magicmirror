@@ -3,10 +3,10 @@
 
   angular
     .module('mirror')
-    .factory('WeatherFactory', WeatherFactory);
+    .factory('Weather', Weather);
 
   /** @ngInject */
-  function WeatherFactory(
+  function Weather(
     $log,
     $http,
     $rootScope,

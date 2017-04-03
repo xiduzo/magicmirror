@@ -1,0 +1,20 @@
+<section>
+  <span class="subheader opacity--5">
+    Agenda
+  </span>
+  <ul>
+    <li ng-repeat="item in agenda.agendaItems" class="padding--bottom">
+      <div class="g-row12">
+        <span class="g-col7--xs">
+          {{ item.title }}
+        </span>
+        <span class="g-col5--xs textAlign--right">
+          {{ item.start | fromNow }}
+        </span>
+      </div>
+      <div ng-if="item.location" class="opacity--4">
+        <i>@{{ item.location[1] }}</i>
+      </div>
+    </li>
+  </ul>
+</section>
