@@ -22,19 +22,23 @@
     return vm;
 
     function init() {
-      getGoogleCalendarData();
+      getGoogleCalendarData([
+        'https://calendar.google.com/calendar/ical/gameshit37%40gmail.com/private-59691a9841dba6a0c7c3d2605b2b7a46/basic.ics',
+        'https://calendar.google.com/calendar/ical/nl.dutch%23holiday%40group.v.calendar.google.com/public/basic.ics'
+      ]);
     }
 
-    function getGoogleCalendarData() {
+    function getGoogleCalendarData(calendars) {
       $http({
         method: 'GET',
         url: HOST + 'assets/agenda/getCalendarData.php',
-        headers: {
-          "Access-Control-Allow-Origin": "*"
+        params: {
+          calendars: angular.toJson(calendars),
         }
       })
       .then(function(response) {
-        $rootScope.$broadcast('agenda', {agenda: response.data});
+        // console.log(response);
+        $rootScope.$broadcast('agenda', {agendas: response.data});
       })
       .catch(function(response) {
         $log.error(response);

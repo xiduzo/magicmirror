@@ -1,5 +1,13 @@
 <?php
 
-$data = file_get_contents('https://calendar.google.com/calendar/ical/gameshit37%40gmail.com/private-59691a9841dba6a0c7c3d2605b2b7a46/basic.ics');
+header('Access-Control-Allow-Origin: *');
 
-echo($data);
+$calendars = json_decode($_GET['calendars']);
+
+$calendar_data = array();
+
+foreach ($calendars as $index => $calendar) {
+  array_push($calendar_data, file_get_contents($calendar));
+}
+
+echo json_encode($calendar_data);

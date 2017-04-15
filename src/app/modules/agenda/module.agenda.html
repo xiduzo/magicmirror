@@ -3,7 +3,7 @@
     Agenda
   </span>
   <ul>
-    <li ng-repeat="item in agenda.agendaItems" class="padding--bottom">
+    <li ng-repeat="item in agenda.agendaItems | orderBy : 'start'" class="padding--bottom">
       <div class="g-row12">
         <span class="g-col7--xs">
           {{ item.title }}

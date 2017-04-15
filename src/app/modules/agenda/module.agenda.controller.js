@@ -17,7 +17,13 @@
     vm.agendaItems = [];
 
     $scope.$on('agenda', function(event, response) {
-      createAgendaItemsFromIcalData(response.agenda);
+      // First clear the old agenda items
+      vm.agendaItems = [];
+
+      // Now fix all the calendar data
+      _.each(response.agendas, function(agendaData) {
+        createAgendaItemsFromIcalData(agendaData);
+      });
     });
 
     function fullNumber(number) {
@@ -28,27 +34,50 @@
       return number;
     }
 
+    function getEventIcon(event) {
+      var icon;
+
+      switch (event) {
+        case 'test':
+          icon = 'icon2';
+          break;
+        default:
+          icon = 'icon';
+      }
+
+      return icon;
+    }
+
     function createAgendaItemsFromIcalData(data) {
-      // First clear the old agenda items
-      vm.agendaItems = [];
       var parsedData = ICAL.parse(data);
       var component = new ICAL.Component(parsedData);
+      console.log(component);
       var events = component.getAllSubcomponents("vevent");
 
       // Filter all the events that are in the past
       events = _.filter(events, function(event) {
         var timezone = event.getFirstPropertyValue('dtstart').timezone;
         var start = event.getFirstPropertyValue('dtstart')._time;
+        var dateTime = '';
 
-        start = ''+fullNumber(start.year)+fullNumber(start.month)+fullNumber(start.day)+'T'+fullNumber(start.hour)+fullNumber(start.minute)+fullNumber(start.second)+timezone;
-        event.start = start;
+        dateTime += fullNumber(start.year);
+        dateTime += fullNumber(start.month);
+        dateTime += fullNumber(start.day);
+        dateTime += 'T';
+        dateTime += fullNumber(start.hour);
+        dateTime += fullNumber(start.minute);
+        dateTime += fullNumber(start.second);
+        dateTime += timezone !== undefined ? timezone : '';
 
-        return moment().isSameOrBefore(moment(start), 'hour');
+        event.start = dateTime;
+
+        // Only return events that are in the future
+        return (moment().isSameOrBefore(moment(event.start), 'hour') && moment(event.start).isSameOrBefore(moment().add(6, 'weeks'), 'day'));
       });
 
       _.each(events, function(event) {
-        var stringCutter = ',';
         vm.agendaItems.push({
+          icon: getEventIcon(),
           title: event.getFirstPropertyValue('summary'),
           description: event.getFirstPropertyValue('description'),
           location: /(.*?)\,/.exec(event.getFirstPropertyValue('location')),
