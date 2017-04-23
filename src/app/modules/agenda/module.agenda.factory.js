@@ -24,7 +24,8 @@
     function init() {
       getGoogleCalendarData([
         'https://calendar.google.com/calendar/ical/gameshit37%40gmail.com/private-59691a9841dba6a0c7c3d2605b2b7a46/basic.ics',
-        'https://calendar.google.com/calendar/ical/nl.dutch%23holiday%40group.v.calendar.google.com/public/basic.ics'
+        'https://calendar.google.com/calendar/ical/nl.dutch%23holiday%40group.v.calendar.google.com/public/basic.ics',
+        'https://calendar.google.com/calendar/ical/mka7ogaifjrbdudfoov6bvq4isu8jcms%40import.calendar.google.com/public/basic.ics'
       ]);
     }
 

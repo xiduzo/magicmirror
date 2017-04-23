@@ -76,6 +76,12 @@
       });
 
       _.each(events, function(event) {
+
+        // Do not add duplicated events crossed over multiple agenda's
+        if(_.findWhere(vm.agendaItems, { title: event.getFirstPropertyValue('summary')})) {
+          return false;
+        }
+
         vm.agendaItems.push({
           icon: getEventIcon(),
           title: event.getFirstPropertyValue('summary'),
