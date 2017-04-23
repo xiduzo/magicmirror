@@ -17,16 +17,18 @@
     var vm = this;
 
     vm.init = init;
-    vm.getGoogleCalendarData = getGoogleCalendarData;
+
+    var CALENDARS = [
+      'https://calendar.google.com/calendar/ical/gameshit37%40gmail.com/private-59691a9841dba6a0c7c3d2605b2b7a46/basic.ics',
+      'https://calendar.google.com/calendar/ical/nl.dutch%23holiday%40group.v.calendar.google.com/public/basic.ics',
+      'https://calendar.google.com/calendar/ical/mka7ogaifjrbdudfoov6bvq4isu8jcms%40import.calendar.google.com/public/basic.ics'
+    ];
 
     return vm;
 
+
     function init() {
-      getGoogleCalendarData([
-        'https://calendar.google.com/calendar/ical/gameshit37%40gmail.com/private-59691a9841dba6a0c7c3d2605b2b7a46/basic.ics',
-        'https://calendar.google.com/calendar/ical/nl.dutch%23holiday%40group.v.calendar.google.com/public/basic.ics',
-        'https://calendar.google.com/calendar/ical/mka7ogaifjrbdudfoov6bvq4isu8jcms%40import.calendar.google.com/public/basic.ics'
-      ]);
+      getGoogleCalendarData(CALENDARS);
     }
 
     function getGoogleCalendarData(calendars) {
@@ -38,7 +40,7 @@
         }
       })
       .then(function(response) {
-        // console.log(response);
+        console.log(response);
         $rootScope.$broadcast('agenda', {agendas: response.data});
       })
       .catch(function(response) {
@@ -46,7 +48,9 @@
       });
 
       // Update this once every 10 minutes
-      $timeout(getGoogleCalendarData, 1000 * 60 * 10);
+      $timeout(function() {
+        getGoogleCalendarData(CALENDARS);
+      }, 1000 * 60 * 10);
     }
 
   }
