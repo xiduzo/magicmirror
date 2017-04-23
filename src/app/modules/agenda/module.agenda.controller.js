@@ -8,8 +8,7 @@
   /** @ngInject */
   function AgendaModuleController(
     $log,
-    $scope,
-    ical
+    $scope
   ) {
 
     var vm = this;
@@ -51,7 +50,7 @@
     function createAgendaItemsFromIcalData(data) {
       var parsedData = ICAL.parse(data);
       var component = new ICAL.Component(parsedData);
-      console.log(component);
+      $log.log(component);
       var events = component.getAllSubcomponents("vevent");
 
       // Filter all the events that are in the past
@@ -67,7 +66,7 @@
         dateTime += fullNumber(start.hour);
         dateTime += fullNumber(start.minute);
         dateTime += fullNumber(start.second);
-        dateTime += timezone !== undefined ? timezone : '';
+        dateTime += angular.isDefined(timezone) ? timezone : '';
 
         event.start = dateTime;
 
@@ -87,7 +86,7 @@
           title: event.getFirstPropertyValue('summary'),
           description: event.getFirstPropertyValue('description'),
           location: /(.*?)\,/.exec(event.getFirstPropertyValue('location')),
-          start: event.start,
+          start: event.start
         });
       });
 

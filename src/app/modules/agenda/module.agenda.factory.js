@@ -36,11 +36,10 @@
         method: 'GET',
         url: HOST + 'assets/agenda/getCalendarData.php',
         params: {
-          calendars: angular.toJson(calendars),
+          calendars: angular.toJson(calendars)
         }
       })
       .then(function(response) {
-        console.log(response);
         $rootScope.$broadcast('agenda', {agendas: response.data});
       })
       .catch(function(response) {
